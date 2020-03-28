@@ -1,0 +1,48 @@
+@using Model;
+@using BLL;
+<link href="css/login.css" rel=stylesheet>
+
+
+<div class="container">
+    <div class="card card-container">
+        <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+        <img id="profile-img" class="profile-img-card" src="imagens\logo1.png" />
+        <p id="profile-name" class="profile-name-card"></p>
+        @{
+            //verificar se chegou dados via POST
+            if (Request.HttpMethod == "POST")
+            {
+                string nome = Request.Form["txtUsuario"];
+                string senha = Request.Form["txtSenha"];
+
+                if (!String.IsNullOrEmpty(nome) && !String.IsNullOrEmpty(senha))
+                {
+                    Funcionario objFunc = new Funcionario("", "", "", "", nome, senha, "", "", "", "");
+
+                    FuncionarioBLL funcBLL = new FuncionarioBLL();
+
+                    bool resultado = funcBLL.autenticar(objFunc);
+
+                    if (resultado == false)
+                    {
+                        <script>alert("Falha ao logar!")</script>
+                    }
+                    else
+                    {
+                        <script>window.location.href = "Index.cshtml"</script>
+                    }
+                }
+            }
+        }
+        <form class="form-signin" method='post'>
+            <span id="reauth-email" class="reauth-email"></span>
+            <input type="text" name="txtUsuario" class="form-control" placeholder="Usuário" required autofocus>
+            <input type="password" name="txtSenha" class="form-control" placeholder="Senha" required>
+            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Entar</button>
+
+        </form><!-- /form -->
+        <a href="Index.cshtml" class="forgot-password">
+            Cancelar?
+        </a>
+    </div><!-- /card-container -->
+</div><!-- /container -->
