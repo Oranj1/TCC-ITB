@@ -1,0 +1,61 @@
+#labelHamburguer{display: block; cursor: pointer;margin-top: 5px}
+.menu {display: none;right: 12%; width: 40%;position: absolute;}
+.menu a {display:block; border-bottom:1px solid #EAEAEB; margin: 0;margin-top: 10px }
+#toggle:checked + .menu {display: block;}
+
+#login{position: absolute;width:30px;  border-right: 10px;left:  20px;margin-top: 10px}
+
+div.logo{position: absolute; left: 48px; top:120px;width:80% ; height: 69px;}
+#frmSair {position: absolute; width: 20%; margin-top: 1.4%; left: 25%}
+header#cabecalho {width:100% ;}
+ul.menuHome{ width: 80%;height: 5%;left: 20%}
+li.menuHome{	width: 2%; top:150px; left: 21px;}
+li.menuServicos{	width: 2%; top:250px; left: 10%;}
+li.menuTrabalho{	width: 2%; top:250px; left: 80%;}
+body{background:url() repeat;width:100%;height:992px;color: rgb(0,0,0,1);}
+div#interface{width: 90%;background-color: white;margin: -20px auto 0px auto;box-shadow: 0px 0px 10px rgba(0,0,0,.5);}
+nav#menu {display:inline;width: 50%;}
+nav#menu ul{text-transform: uppercase;position: absolute;width: 2%; top:245px;left: 50px;background-color:rgba (#0070c0)}
+nav#menu li{display: inline;background-color:rgba(#0070c0);padding:05px;margin:10px;}
+header{height: 286px;}
+footer{width: 95%;height: 380px;background-color:#C5C1C0;margin: auto;}
+footer figure#mapa img{position: relative;width:65%;height:150px;left: 50px;top: 10px;}
+div#TConosco{margin-left: 0px; width: 470px; margin-top: 5px;}
+h2{width: 72%;padding-left: 28%;margin: auto; font-size:27px }
+p{font-size:95% }
+h4{font-size: 120%;background-color: #0070c0;padding-left:  6%;padding-right: 10%;width: 30%;border-radius: 10px}
+.h4SegurançaPatrimonial{font-size: 19px;
+	background-color: #0070c0;
+	padding-left:  2%;
+	padding-right: 5%;
+	width: 23%;
+	border-radius: 10px}
+	.h4Rondas{font-size: 19px;
+		background-color: #0070c0;
+		padding-left:  1%;
+		padding-right: 0.5%;
+		width: 19%;
+		border-radius: 10px}
+		.h4Monitoramento{font-size: 19px;
+			background-color: #0070c0;
+			padding-left:  2%;
+			padding-right: 5%;
+			width: 31%;
+			border-radius: 10px}
+
+
+			/*--------------------TrabalheConosco----------------------*/
+			div#TConosco{width: 90%;margin: auto;font-size: 25px;background-color: #C5C1C0
+			}
+			/*--------------------Relatório----------------------*/
+			.clnRelatorio{background-color: #C5C1C0;}
+			form#fRelatorio textarea#textArea{font-size: 18px;width: 95%;margin-left:  10px}
+			.btnGravar{margin-right: 470px}
+			.btnLimpar{}
+			/*--------------------Escalas---------------------*/
+			.h2480{width: 69%;padding-left: 31%; font-size:95%  }
+			p#pEscala{width: 50%; font-size: 10px;margin-left: -60px; background-color: white; top: 10px}
+			p#pEscala2{width: 58%; font-size: 10px;margin-left: -530px; background-color: white; top: 165px}
+			div#Escalas{background-color: #D9B310; font-size: 5px;position: relative ;width: 98%;height: 165px;left:6px;top: 10px;margin-bottom: 80px; }
+			div#Escalas th{background-color: #C5C1C0;font-size: 07.9px;  width: 10%; height: 50px;padding-left: auto;padding-right:auto;}
+			div#Escalas td{background-color: #C5C1C0;font-size: 10px;  width: 10%; height: 50px;padding-left: auto;padding-right:auto;}
