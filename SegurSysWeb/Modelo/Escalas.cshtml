@@ -1,0 +1,158 @@
+@using Model;
+@using BLL;
+@using DAL;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8/">
+    <title>Segurança Particular</title>
+    <meta charset=UTF-8> <!-- ISO-8859-1 -->
+    <meta name=viewport content="width=device-width, initial-scale=1.0"> <!-- não se deve travar o zoom-->
+    <meta name=description content=""> <!-- 360caracteres, porem com perdas após 160 caracteres-->
+    <meta name=keywords content=""> <!-- Opcional -->
+    <meta name=author content=''>
+    <meta name=application-name content=StackOverflow>
+    <!-- favicon, arquivo de imagem podendo ser 8x8 - 16x16 - 32x32px com extensão .ico -->
+    <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
+
+    <!-- CSS PADRÃO -->
+    <link href="css/default.css" rel=stylesheet>
+    <!-- Telas Responsivas -->
+    <link rel=stylesheet media="screen and (max-width:480px)" href="css/style480.css">
+    <link rel=stylesheet media="screen and (min-width:481px) and (max-width:768px)" href="css/style768.css">
+    <link rel=stylesheet media="screen and (min-width:769px) and (max-width:1024px)" href="css/style1024.css">
+    <link rel=stylesheet media="screen and (min-width:1025px)" href="css/style1025.css">
+
+
+</head>
+<body>
+    <div id="interface">
+
+        <header id="cabecalho">
+            <div class="logo">
+                <img src="imagens\logoOficial.png">
+            </div>
+            @{
+                Funcionario Func = (Funcionario)Session["usuarioLogado"];
+
+                if (Request.HttpMethod == "GET")
+                {
+
+                    if (Request.QueryString["Sair"] != null)
+                    {
+                        FuncionarioBLL FuncBLL = new FuncionarioBLL();
+                        FuncBLL.logout();
+                        <script>window.location.href = "Index.cshtml"</script>
+                    }
+                }
+
+
+                if (Func == null)
+                {
+                    <script>
+                        alert("Acesso Negado!");
+                        window.location.href = "Index.cshtml";
+                    </script>
+
+                }
+                else
+                {
+                    <figure id="login">
+                        <p style="color:#FFFFFF;font-size:12px">Bem Vindo @Html.Raw(Func.Nome)</p>
+                    </figure>
+
+                    <form method="get" action="Index.cshtml" id="frmSair">
+                        <input type="hidden" value="sair" id="sair" name="sair" />
+                        <input id="btnSair" type="submit" value="   Sair   ">
+                    </form>
+                }
+            }
+
+            <label id="labelHamburguer" for="toggle">&#9776;</label>
+            <input type="checkbox" id="toggle" />
+            <div class="menu">
+
+                <ul class="menuHome">
+                    <li> <a href="Index.cshtml"> Home </a> </li>
+                    <li> <a href="Servicos.cshtml" class="menuServicos"> Serviços  </a> </li>
+                    <li> <a href="TrabalheConosco.cshtml" class="menuTrabalho">Trabalhe Conosco </a> </li>
+                    @{
+                        if (Func != null)
+                        {
+                            <li> <a href="Escalas.cshtml" class="menuServicos"> Escalas  </a> </li>
+                            <li> <a href="Relatorio.cshtml" class="menuTrabalho">Relatório </a> </li>
+                        }
+                    }
+                </ul>
+
+            </div>
+
+        </header>
+
+
+        <h2 class="h2480">Acompanhe sua Escala</h2>
+        <br />
+        <p id="pEscala">Olá @Func.Nome</p>
+        <div id="Escalas">
+
+
+            <table class="table table-striped ">
+                <thead>
+                    <tr>
+                        <th>Domingo</th>
+                        <th>Segunda</th>
+                        <th>Terça</th>
+                        <th>Quarta</th>
+                        <th>Quinta</th>
+                        <th>Sexta</th>
+                        <th>Sábado</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>----</td>
+                        <td>----</td>
+                        <td>12:00</td>
+                        <td>12:00</td>
+                        <td>12:00</td>
+                        <td>12:00</td>
+                        <td>----</td>
+                    </tr>
+                    <tr>
+                        <td>----</td>
+                        <td>----</td>
+                        <td>00:00</td>
+                        <td>00:00</td>
+                        <td>00:00</td>
+                        <td>00:00</td>
+                        <td>----</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p id="pEscala2">A SegurSys deseja uma ótima semana. </p>
+        </div>
+
+        <footer>
+
+            <h3><u><i>SegurSys</i></u></h3>
+            <p>
+                Uma Empresa criada para Você
+                “Segurança ácima de Tudo!”
+            </p><br />
+            <p>
+                Endereço: R. Ricarte Sewaybricker, 52 -
+                Centro, Jandira
+            </p>- SP 06600-045
+            Telefone: (11) 4789-29955</p>
+
+            <figure id="mapa">
+                <a href=https://www.google.com.br/search?rlz =1C1NDCM_pt-BRBR815BR815&q =jandira+shopping&npsic =0&rflfq =1&rlha =0&rllag =-23528518,-46902145,44&tbm =lcl&ved =2ahUKEwjl1uzu7-ndAhWDtVMKHQf_CskQtgN6BAgAEAQ&tbs =lrf:!2m1!1e2!2m1!1e3!3sIAE,lf:1,lf_ui:2&rldoc =1#rlfi =hd:;si:12720122442488774887;mv:!3m12!1m3!1d400.1058533616324!2d-46.902145499999996!3d-23.528518149999996!2m3!1f0!2f0!3f0!3m2!1i10!2i21!4f13.1> <img src="imagens\JandiraOficial.png"></a>
+            </figure>
+
+
+        </footer>
+    </div>
+</body>
+</html>
