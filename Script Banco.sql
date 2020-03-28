@@ -62,7 +62,7 @@ dia_semana VARCHAR(10) NOT NULL,
 ativo CHAR(1) NOT NULL,
 CONSTRAINT PK_ESCALA PRIMARY KEY(id_escala),
 CONSTRAINT CK_ATIVO_ESCALA CHECK(ativo in ('0', '1')),
-CONSTRAINT CK_DIA CHECK (dia_semana in ('Domingo', 'Segunda','Terça', 'Quarta','Quinta', 'Sexta', 'Sábado', 'Todos')),
+CONSTRAINT CK_DIA CHECK (dia_semana in ('Domingo', 'Segunda','TerÃ§a', 'Quarta','Quinta', 'Sexta', 'SÃ¡bado', 'Todos')),
 CONSTRAINT FK_ESCALA_TURNO FOREIGN KEY(id_turno) REFERENCES Turno (id_turno),
 CONSTRAINT FK_ESCALA_FUNC FOREIGN KEY(id_func) REFERENCES Funcionario (id_func)
 )
@@ -92,7 +92,7 @@ id_turno INT NULL,
 visto_por INT NULL,
 _status VARCHAR(26) NOT NULL,
 CONSTRAINT CK_STATUS CHECK(_status in ('Solucionado', 'Em Aberto', 'Encaminhado para a Policia')),
-CONSTRAINT CK_NV_OCO CHECK(nivel_ocorrencia in ('Baixo', 'Médio', 'Alto')),
+CONSTRAINT CK_NV_OCO CHECK(nivel_ocorrencia in ('Baixo', 'MÃ©dio', 'Alto')),
 CONSTRAINT PK_OCORRENIA PRIMARY KEY(id_ocorrencia),
 CONSTRAINT FK_OCO_AREA FOREIGN KEY(id_area) REFERENCES Area(id_area),
 CONSTRAINT FK_OCO_FUNC FOREIGN KEY(id_func) REFERENCES Funcionario(id_func),
@@ -110,9 +110,9 @@ proximo_ponto VARCHAR(30) NOT NULL,
 id_func INT NOT NULL,
 dia_semana VARCHAR(10),
 CONSTRAINT PK_ATUAL PRIMARY KEY (id_atual),
-CONSTRAINT CK_TRABALHANDO CHECK(trabalhando in ('Sim', 'Não')),
-CONSTRAINT CK_INTERVALO CHECK(intervalo in ('Sim', 'Não')),
-CONSTRAINT CK_DIA_ATUAL CHECK (dia_semana in ('Domingo', 'Segunda','Terça', 'Quarta','Quinta', 'Sexta', 'Sábado')),
+CONSTRAINT CK_TRABALHANDO CHECK(trabalhando in ('Sim', 'NÃ£o')),
+CONSTRAINT CK_INTERVALO CHECK(intervalo in ('Sim', 'NÃ£o')),
+CONSTRAINT CK_DIA_ATUAL CHECK (dia_semana in ('Domingo', 'Segunda','TerÃ§a', 'Quarta','Quinta', 'Sexta', 'SÃ¡bado')),
 CONSTRAINT FK_FUNC_ATUAL FOREIGN KEY (id_func) REFERENCES Funcionario (id_func)
 )
 
@@ -124,32 +124,3 @@ id_func int NOT NULL,
 constraint PK_ID_REL primary key(id_relatorio),
 constraint FK_ID_FUNBC_REL foreign key (id_func) references funcionario(id_func)
 )
-
-INSERT INTO Area(ponto, ativo) VALUES ('Patio', '1')
-INSERT INTO Area(ponto, ativo) VALUES ('Setor 1', '1')
-INSERT INTO Area(ponto, ativo) VALUES ('Setor 2', '1')
-INSERT INTO Area(ponto, ativo) VALUES ('Setor 3', '1')
-INSERT INTO Area(ponto, ativo) VALUES ('Portão', '1')
-INSERT INTO Area(ponto, ativo) VALUES ('Corredor', '1')
-
-INSERT INTO Funcionario (cpf, telefone, celular, rg, nome, usuario, senha, nivel_acesso, ativo) VALUES ('68921135081', '2738169822', '27996721186', '251708998', 'César Filipe Martins', 'ce', '123456', '2', '1')
-
-INSERT INTO Turno (horario_de_inicio, horario_de_termino, horario_intervalo, horario_termino_intervalo, periodo) VALUES ('10:30', '21:30', '17:00', '18:00', 'Diurno')
-INSERT INTO Escala (id_func, id_turno, dia_semana, ativo) VALUES ('1', '1', 'Domingo', '1')
-INSERT INTO Turno (horario_de_inicio, horario_de_termino, horario_intervalo, horario_termino_intervalo, periodo) VALUES ('10:30', '21:30', '17:00', '18:00', 'Diurno')
-INSERT INTO Escala (id_func, id_turno, dia_semana, ativo) VALUES ('1', '2', 'Segunda', '1')
-INSERT INTO Turno (horario_de_inicio, horario_de_termino, horario_intervalo, horario_termino_intervalo, periodo) VALUES ('10:30', '21:30', '17:00', '18:00', 'Diurno')
-INSERT INTO Escala (id_func, id_turno, dia_semana, ativo) VALUES ('1', '3', 'Terça', '1')
-INSERT INTO Turno (horario_de_inicio, horario_de_termino, horario_intervalo, horario_termino_intervalo, periodo) VALUES ('10:30', '21:30', '17:00', '18:00', 'Diurno')
-INSERT INTO Escala (id_func, id_turno, dia_semana, ativo) VALUES ('1', '4', 'Quarta', '1')
-INSERT INTO Turno (horario_de_inicio, horario_de_termino, horario_intervalo, horario_termino_intervalo, periodo) VALUES ('10:30', '21:30', '17:00', '18:00', 'Diurno')
-INSERT INTO Escala (id_func, id_turno, dia_semana, ativo) VALUES ('1', '5', 'Quinta', '1')
-INSERT INTO Turno (horario_de_inicio, horario_de_termino, horario_intervalo, horario_termino_intervalo, periodo) VALUES ('10:30', '21:30', '17:00', '18:00', 'Diurno')
-INSERT INTO Escala (id_func, id_turno, dia_semana, ativo) VALUES ('1', '6', 'Sexta', '1')
-INSERT INTO Turno (horario_de_inicio, horario_de_termino, horario_intervalo, horario_termino_intervalo, periodo) VALUES ('10:30', '21:30', '17:00', '18:00', 'Diurno')
-INSERT INTO Escala (id_func, id_turno, dia_semana, ativo) VALUES ('1', '7', 'Sábado', '1')
-
-insert into Ronda(rota, tempo, id_escala) values('Patio_Setor 1_Setor 2','00:10','1')
-insert into Ronda(rota, tempo, id_escala) values('Patio_Setor 1_Setor 2','00:10','2')
-insert into Ronda(rota, tempo, id_escala) values('Patio_Setor 1_Setor 2','00:10','3')
-
