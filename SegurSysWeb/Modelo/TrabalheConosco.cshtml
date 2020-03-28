@@ -1,0 +1,223 @@
+@using Model;
+@using BLL;
+@using DAL;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8/">
+    <title>Segurança Particular</title>
+    <meta charset=UTF-8> <!-- ISO-8859-1 -->
+    <meta name=viewport content="width=device-width, initial-scale=1.0"> <!-- não se deve travar o zoom-->
+    <meta name=description content=""> <!-- 360caracteres, porem com perdas após 160 caracteres-->
+    <meta name=keywords content=""> <!-- Opcional -->
+    <meta name=author content=''>
+    <meta name=application-name content=StackOverflow>
+    <!-- favicon, arquivo de imagem podendo ser 8x8 - 16x16 - 32x32px com extensão .ico -->
+    <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
+
+    <!-- CSS PADRÃO -->
+    <link href="css/default.css" rel=stylesheet>
+    <!-- Telas Responsivas -->
+    <link rel=stylesheet media="screen and (max-width:480px)" href="css/style480.css">
+    <link rel=stylesheet media="screen and (min-width:481px) and (max-width:768px)" href="css/style768.css">
+    <link rel=stylesheet media="screen and (min-width:769px) and (max-width:1024px)" href="css/style1024.css">
+    <link rel=stylesheet media="screen and (min-width:1025px)" href="css/style1025.css">
+
+</head>
+<body>
+    <div id="interface">
+
+        <header id="cabecalho">
+            <div class="logo">
+                <img src="imagens\logoOficial.png">
+            </div>
+            @{
+
+                Funcionario Func = (Funcionario)Session["usuarioLogado"];
+
+
+                if (Request.HttpMethod == "GET")
+                {
+
+                    if (Request.QueryString["Sair"] != null)
+                    {
+                        FuncionarioBLL FuncBLL = new FuncionarioBLL();
+                        FuncBLL.logout();
+                        <script>window.location.href = "Index.cshtml"</script>
+                    }
+                }
+
+                if (Func == null)
+                {
+                    <figure id="login">
+                        <a href="login.cshtml"><img id="login" src="imagens\Entrar.png"></a>
+                    </figure>
+                }
+                else
+                {
+                    <figure id="login">
+                        <p style="color:#FFFFFF;font-size:12px">Bem Vindo @Html.Raw(Func.Nome)</p>
+                    </figure>
+                    <form method="get" action="Index.cshtml" id="frmSair">
+                        <input type="hidden" value="sair" id="sair" name="sair" />
+                        <input id="btnSair" type="submit" value="   Sair   ">
+                    </form>
+
+
+
+                }
+
+                if (Request.HttpMethod == "POST")
+                {
+
+                }
+            }
+            <label id="labelHamburguer" for="toggle">&#9776;</label>
+            <input type="checkbox" id="toggle" />
+            <div class="menu">
+
+                <ul class="menuHome">
+                    <li> <a href="Index.cshtml"> Home </a> </li>
+                    <li> <a href="Servicos.cshtml" class="menuServicos"> Serviços  </a> </li>
+                    <li> <a href="TrabalheConosco.cshtml" class="menuTrabalho">Trabalhe Conosco </a> </li>
+                    @{
+                        if (Func != null)
+                        {
+                            <li> <a href="Escalas.cshtml" class="menuServicos"> Escalas  </a> </li>
+                            <li> <a href="Relatorio.cshtml" class="menuTrabalho">Relatório </a> </li>
+                        }
+                    }
+                </ul>
+
+            </div>
+
+        </header>
+
+
+        <h2 class="h2TConosco">Trabalhe Conosco</h2>
+        <div id="TConosco">
+            <form method="post" id="fContato">
+
+
+                <fieldset id="candidato">
+                    <legend>Informações do Candidato</legend>
+
+                    <p>
+                        <label name="cNome"> Nome:</label>
+                        <input type="text" name="tNome" size="30" maxlength="30" placeholder="Nome Completo" />
+                    </p>
+
+                    <p>
+                        <label name="cMail">Email:</label>
+                        <input type="email" name="tMail" size="30" maxlength="40" placeholder="Email" />
+                    </p>
+
+
+
+                    <br />
+                    <p><u>Sexo</u> </p>
+                    <p> <input type="radio" name="tSexo" id="cMasc" checked="" /><label for="cMasc">Masculino</label><br /></p>
+                    <p><input type="radio" name="tSexo" id="cFem" /><label for="cFem">Feminino</label></p>
+
+
+
+                    <p> <fieldset id="cNasc">Data de Nascimento:</p>
+                    <p>
+                        <input type="date" name="tNasc" id="tNasc">
+
+                        <br />
+
+                    <p> <fieldset id="endereco"><legend style="font-size: 20px">Endereço</legend></p>
+                    <p> <label for="cRua">Logadouro: <input type="text" name="tRua" id="cRua" size="25" maxlength="80" placeholder="Rua, Av, Trav"></label></p>
+                    <p> <label for="cNum">Número: <input type="number" name="tNum" id="cNum" min="0" max="9999"></label></p>
+                    <p>
+                        <label for="cEst">Estado: </label>
+                        <select name="tEst" id="cEst">
+
+                            <optgroup label="Região Sudeste">
+                                <option>São Paulo</option>
+                                <option>Rio de Janeiro</option>
+                                <option>Espírito Santo</option>
+                                <option>Minas Gerais</option>
+                            </optgroup>
+
+                            <optgroup label="Região Sul">
+                                <option>Paraná</option>
+                                <option>Santa Catarina</option>
+                                <option>Espírito Santo</option>
+                                <option>Rio Grande do Sul</option>
+                            </optgroup>
+
+                            <optgroup label="Região Norte">
+                                <option>Acre</option>
+                                <option>Amapá </option>
+                                <option>Amazonas  </option>
+                                <option>Pará  </option>
+                                <option>Rondônia  </option>
+                                <option>Roraima</option>
+                                <option>Tocantins </option>
+                            </optgroup>
+
+                            <optgroup label="Região Nordeste">
+                                <option>Alagoas</option>
+                                <option>Bahia </option>
+                                <option>Ceará</option>
+                                <option>Maranhão</option>
+                                <option>Paraíba</option>
+                                <option>Pernambuco</option>
+                                <option>Piauí</option>
+                                <option>Rio Grande do Norte</option>
+                                <option>Sergipe</option>
+                            </optgroup>
+
+                            <optgroup label="Região Centro-Oeste">
+                                <option>Distrito Federal</option>
+                                <option>Goiás</option>
+                                <option>Mato Grosso</option>
+                                <option>Mato Grosso do Sul</option>
+                            </optgroup>
+                        </select>
+                    </p>
+
+                    <p><label for="cCid">Cidade: </label><input type="text" name="t.Cid" id="cCid" size="20" maxlength="40"></p>
+
+                    <br />
+
+                    <p> <fieldset id="curriculum"><legend>Curriculum</legend></p>
+                </fieldset>
+
+
+                <p> <label for="cCurric">Selecione seu curriculum</label></p>
+                <input type="file" class="form-control-file" id="cCurric"><br />
+
+
+                <br /><br />
+                <input type="submit" class="btnEnviar" style="font-size: 15px" value="Enviar" />
+                <input type="reset" class="btnRedefinir" style="font-size: 15px" value="Redefinir" />
+            </form>
+        </div>
+        <br />
+
+
+        <footer>
+
+            <h3><u><i>SegurSys</i></u></h3>
+            <p>
+                Uma Empresa criada para Você
+                “Segurança ácima de Tudo!”
+            </p><br />
+            <p>
+                Endereço: R. Ricarte Sewaybricker, 52 -
+                Centro, Jandira
+            </p>- SP 06600-045
+            Telefone: (11) 4789-29955</p>
+
+            <figure id="mapa">
+                <a href=https://www.google.com.br/search?rlz =1C1NDCM_pt-BRBR815BR815&q =jandira+shopping&npsic =0&rflfq =1&rlha =0&rllag =-23528518,-46902145,44&tbm =lcl&ved =2ahUKEwjl1uzu7-ndAhWDtVMKHQf_CskQtgN6BAgAEAQ&tbs =lrf:!2m1!1e2!2m1!1e3!3sIAE,lf:1,lf_ui:2&rldoc =1#rlfi =hd:;si:12720122442488774887;mv:!3m12!1m3!1d400.1058533616324!2d-46.902145499999996!3d-23.528518149999996!2m3!1f0!2f0!3f0!3m2!1i10!2i21!4f13.1> <img src="imagens\JandiraOficial.png"></a>
+            </figure>
+
+
+        </footer>
+    </div>
+</body>
+</html>
