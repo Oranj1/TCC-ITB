@@ -1,0 +1,157 @@
+@using Model;
+@using BLL;
+@using DAL;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8/">
+    <title>Segurança Particular</title>
+    <meta charset=UTF-8> <!-- ISO-8859-1 -->
+    <meta name=viewport content="width=device-width, initial-scale=1.0"> <!-- não se deve travar o zoom-->
+    <meta name=description content=""> <!-- 360caracteres, porem com perdas após 160 caracteres-->
+    <meta name=keywords content=""> <!-- Opcional -->
+    <meta name=author content=''>
+    <meta name=application-name content=StackOverflow>
+    <!-- favicon, arquivo de imagem podendo ser 8x8 - 16x16 - 32x32px com extensão .ico -->
+    <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
+
+    <!-- CSS PADRÃO -->
+    <link href="css/default.css" rel=stylesheet>
+    <!-- Telas Responsivas -->
+    <link rel=stylesheet media="screen and (max-width:480px)" href="css/style480.css">
+    <link rel=stylesheet media="screen and (min-width:481px) and (max-width:768px)" href="css/style768.css">
+    <link rel=stylesheet media="screen and (min-width:769px) and (max-width:1024px)" href="css/style1024.css">
+    <link rel=stylesheet media="screen and (min-width:1025px)" href="css/style1025.css">
+
+
+</head>
+<body>
+    <div id="interface">
+        <header id="cabecalho">
+
+            <div class="logo">
+                <img src="imagens\logoOficial.png">
+            </div>
+
+            @{
+                Funcionario Func = (Funcionario)Session["usuarioLogado"];
+
+                if (Request.HttpMethod == "GET")
+                {
+
+                    if (Request.QueryString["sair"] != null)
+                    {
+                        FuncionarioBLL FuncBLL = new FuncionarioBLL();
+                        FuncBLL.logout();
+                        <script>window.location.href = "Index.cshtml"</script>
+                    }
+                }
+
+                if (Func == null)
+                {
+                    <figure id="login">
+                        <a href="login.cshtml"><img id="login" src="imagens\Entrar.png"></a>
+                    </figure>
+                }
+                else
+                {
+                    <figure id="login">
+
+                        <p style="color:#FFFFFF;font-size:12px">Bem Vindo @Html.Raw(Func.Nome)</p>
+                    </figure>
+
+                    <form method="get" action="Index.cshtml" id="frmSair">
+                        <input type="hidden" value="sair" id="sair" name="sair"/>
+                        <input id="btnSair" type="submit" value="   Sair   ">
+                    </form>
+                }
+            }
+
+            <label id="labelHamburguer" for="toggle">&#9776;</label>
+            <input type="checkbox" id="toggle" />
+            <div class="menu">
+
+                <ul class="menuHome">
+                    <li> <a href="Index.cshtml"> Home </a> </li>
+                    <li> <a href="Servicos.cshtml" class="menuServicos"> Serviços  </a> </li>
+                    <li> <a href="TrabalheConosco.cshtml" class="menuTrabalho">Trabalhe Conosco </a> </li>
+                    @{
+                        if (Func != null)
+                        {
+                            <li> <a href="Escalas.cshtml" class="menuServicos"> Escalas  </a> </li>
+                            <li> <a href="Relatorio.cshtml" class="menuTrabalho">Relatório </a> </li>
+                        }
+                    }
+                </ul>
+
+            </div>
+
+        </header>
+        <!--
+            <div id="interface">
+                <header id="cabecalho">
+                  <h1 class="logo"></h1>
+
+                  <figure>
+                    <a href ="C:\Users\Rodri\OneDrive\Área de Trabalho\WebUltima\login.html"><img id="login" src="C:\Users\Rodri\OneDrive\Área de Trabalho\WebUltima\imagens\Entrar.png"></a>
+                    </figure>
+
+                    <nav id="menu">
+
+                        <ul class="menuHome">
+                          <li > <a href ="C:\Users\Rodri\OneDrive\Área de Trabalho\WebUltima\Home.html" > Home </a> </li>
+                          <li> <a href ="C:\Users\Rodri\OneDrive\Área de Trabalho\WebUltima\Servicos.html" class="menuServicos"> Serviços  </a> </li>
+                          <li> <a href ="C:\Users\Rodri\OneDrive\Área de Trabalho\WebUltima\TrabalheConosco.html" class="menuTrabalho">Trabalhe Conosco </a> </li>
+                      </ul>
+                  </nav>
+              </header>
+          -->
+
+
+
+        <h2>História</h2>
+        <p>
+            &nbsp &nbsp SegurSys fundada em 28 de Janeiro de 2000, celebrou nesse ano 18 anos de existencia, prestando serviços personalizados.
+            Sempre primando pela qualidade, a empresa investe periodicamente na mudança de seus equipamentos e aprimoramento de seus serviços serviços, de forma que hoje, a SegurSys é o modelo para as demais
+            empresas do mercado, e das mais modernas na sua área de atuação no mercado brasileiro.
+        </p>
+        <p>
+            &nbsp &nbsp Atuando nos segmentos de Segurança Particular temos provado nossa eficácia e a qualidade do nosso trabalho. Fundada a partir da necessidade de atendimento especilaizado ás instituições financeiras e a
+            indústria, a SegurSys se firmou no mercado e, atualmente, tem atendido as necessidades presentes.
+            Nosso propósito, desde os primeiros dias de exixtência, foi prestar as melhores soluções com qualidade, rapidez, tecnologia e ética profissional, através de especialização, aperfeiçoamento e atualização de mercado.
+        </p>
+
+        <br /></br/>
+
+        <h2>Missão</h2>
+        <p>&nbsp &nbsp Prestar com qualidade as melhores soluções em segurança, por meio de rapidez, tecnologia e ética profissional, proporcionando o bem-estar de nossos cientes. Garantindo cada vez mais credibilidade, solidez e exelência no mercado. </p>
+
+        <br /></br/>
+        <h2>Exelência</h2>
+        <p>&nbsp &nbsp Exelência é ter foco para perceber e decidir o que é relevante, planejando o tempo todo para a execução de forma eficiente, buscando soluções e estratégias para otimização dos processos. Tendo a capaciade de alcançar e superar metas estabelecidas, garantindo a qualidade no que é feito </p>
+        <br /><br /><br />
+        <footer>
+
+            <h3><u><i>SegurSys</i></u></h3>
+            <p class="lblEscala">
+                Uma Empresa criada para Você
+                “Segurança ácima de Tudo!”
+            </p><br />
+            <p>
+                Endereço: R. Ricarte Sewaybricker, 52 -
+                Centro, Jandira
+            </p>- SP 06600-045
+            Telefone: (11) 4789-29955</p>
+
+            <figure id="mapa">
+                <a href=https://www.google.com.br/search?rlz =1C1NDCM_pt-BRBR815BR815&q =jandira+shopping&npsic =0&rflfq =1&rlha =0&rllag =-23528518,-46902145,44&tbm =lcl&ved =2ahUKEwjl1uzu7-ndAhWDtVMKHQf_CskQtgN6BAgAEAQ&tbs =lrf:!2m1!1e2!2m1!1e3!3sIAE,lf:1,lf_ui:2&rldoc =1#rlfi =hd:;si:12720122442488774887;mv:!3m12!1m3!1d400.1058533616324!2d-46.902145499999996!3d-23.528518149999996!2m3!1f0!2f0!3f0!3m2!1i10!2i21!4f13.1> <img src="imagens\JandiraOficial.png"></a>
+            </figure>
+
+
+        </footer>
+    </div>
+
+</body>
+
+
+
