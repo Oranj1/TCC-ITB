@@ -1,0 +1,318 @@
+
+	CSS reset 
+	Ajustar o comportamento padrão
+	dos elementos HTML
+
+	seletor * (asterisco) 
+	selecionar todos os elementos
+	*/
+	
+
+	*{
+		margin:0;
+		padding:0;
+		font-family: Arial, Helvetica, sans-serif
+
+	}
+/*
+seletores comuns
+
+tag ex:
+header{conteúdo}
+
+. (classe) ex
+.btnCancel{conteúdo}
+
+# (id) ex.
+#validarTexto{conteúdo}
+
+:hover
+
+*/
+/*figure#loginn{width: 20px ;}      TENTAR MODIFICAR */
+
+
+.nav{
+	border-bottom: 1px solid #EAEAAB;
+	text-align: right;;
+	height: 70px;
+	line-height: 70px;
+
+}
+.menu li{
+	display: inline;
+	background-color:rgba(#0070c0);
+	padding:05px;
+	margin:10px;
+}
+.menu{
+	margin: 0 30px 0 0;
+	display: inline;
+
+}
+.menu a {
+
+	background:#333; 
+	color:#fff; 
+	-moz-box-shadow:0 3px 10px 0 #CCC; 
+	-webkit-box-shadow:0 3px 10px 0 #ccc; 
+	text-shadow:0px 0px 5px #fff; 
+	text-decoration: none;
+
+}
+.menu a:hover { /* Mouse em cima*/
+	color:black;
+	background-color:#D9B310;
+}
+
+span{
+	color: #54D17A
+}
+#labelHamburguer{
+	color:red;
+	margin:0 40px 0 0;
+	font-size: 26px;
+	line-height: 70px;
+	display:  none;
+	width: 26px;
+	float: right;
+}
+#toggle{display: none;}
+
+
+
+
+
+
+
+/*-----------------------------------------------Body----------------------------------------------------*/
+html,body{
+	background:url(../imagens/FundoOficial.jpeg) repeat;
+	
+	width:100%;
+	height:100px;
+	color: rgb(0,0,0,1);
+}
+div#interface{
+	width: 78.9%;
+	background-color: white;
+	margin: -20px auto 0px auto;
+	box-shadow: 0px 0px 10px rgba(0,0,0,.5);
+	padding:10px
+}
+/*-----------------------------------------------Cabeçalho-----------------------------------------------------*/
+#login{
+	position: absolute;
+	width: 20%;
+	margin-top: 1%;
+	left: 70%
+
+}
+
+#frmSair {
+    position: absolute;
+    margin-top: 1.4%;
+    left: 80%;
+}
+
+
+div.logo{ 
+	position: absolute;
+	left: 22%;
+	top:25px;
+	width: 50%;
+	height: 200px;
+
+	background-repeat: no-repeat;
+	border: 1px;
+	background-size: contain;
+
+
+}
+img{
+	max-width: 100%;
+	height: auto;
+}
+
+/*
+	.logo{ 
+		position: absolute;
+		left: 450px;
+		top:10px;
+		width: 50%;
+		height: 28%;
+		background: url(../imagens/logoOficial.png) center center/100%;
+
+		}*/
+		
+
+		header{ 
+
+			width:100%;
+			height: 250px;
+			display: block;
+			background-color: #1D2731	
+		}
+
+		/*---------------------------------------------Formatação do menu*-------------------------------------------------------*/
+		nav#menu {
+			display:block;
+		}
+		nav#menu ul{
+			text-transform: uppercase;
+			position: absolute;
+			top: 28%;
+			left: 38%;
+			background-color:rgba (#0070c0)
+		}
+		nav#menu li{
+			display: inline;
+			background-color:rgba(#0070c0);
+			padding:05px;
+			margin:10px;
+		}
+		
+		nav#menu li a{
+			background:#333; 
+			color:#fff; 
+			-moz-box-shadow:0 3px 10px 0 #CCC; 
+			-webkit-box-shadow:0 3px 10px 0 #ccc; 
+			text-shadow:0px 0px 5px #fff; 
+			text-decoration: none;
+		}
+
+		/*----------------------------------------------Texto------------------------------------------------------*/
+		h2{
+			background-color:#D9B310;
+
+			width: 60%;
+			padding-left: 40%
+		}
+		h3{
+			font-size: 30px
+		}
+
+		p{
+			font-size: 18px;
+			line-height: 30px
+		}
+		.h4SegurançaPatrimonial{font-size: 25px;
+	background-color: #0070c0;
+	padding-left:  2%;
+	padding-right: 5%;
+	width: 14%;
+	border-radius: 10px}
+	.h4Rondas{font-size: 25px;
+		background-color: #0070c0;
+		padding-left:  1%;
+		padding-right: 0.5%;
+		width: 13%;
+		border-radius: 10px}
+		.h4Monitoramento{font-size: 25px;
+			background-color: #0070c0;
+			padding-left:  2%;
+			padding-right: 5%;
+			width: 19%;
+			border-radius: 10px}
+
+
+
+
+		/*-----------------------------------------------Trabalhe Conosco-----------------------------------------------------*/
+		div#TConosco{
+			width: 50%;
+			font-size: 25px;
+			margin:auto;
+			margin-top: 10px;
+			background-color: #C5C1C0;
+
+		}
+		div#TConosco form p{
+			font-size:20px;
+			padding-left: 20px
+
+		}
+
+		form input#cMasc{
+			background-color: red;
+			width: 
+		}
+
+		div#TConosco form input#tNome, #tMail, #cMasc, #cFem, #tNasc, #cRua, #cNum, #cCid{
+			color: red;
+		}
+		.btnEnviar{}
+
+		.btnRedefinir{}
+		/*----------------------------------------------------------------------------------------------------*/
+		/*Rodapé*/
+		footer{
+			width: 100%;
+			height: 210px;
+			background-color:#C5C1C0
+		}
+		footer figure#mapa img{
+			position: relative;
+			width:35%;
+			height:170px;
+			left: 500px;
+			top:-100px;
+		}
+		/*------------------------------------------------Relatório---------------------------------------------------------*/
+		form#fRelatorio textarea#textArea{
+			font-size: 18px;
+			width: 90%;
+			margin-left:  5%
+		}
+
+		/*---------------------------------Escalas-----------------------------------------------------------*/
+		div#Escalas{
+			background-color: #D9B310;
+			
+			position: relative;
+			
+			
+			width: 75.5%;
+			
+
+			height: 2%;
+			left:10%;
+			top: 70px;
+			margin-bottom: 16%;
+
+		}
+div#Escalas th{
+background-color: #C5C1C0;
+			font-size: 80%;
+			padding-left: 1%;
+			width: 30%;
+			height: 90px
+		}
+
+		div#Escalas td{
+			background-color: #C5C1C0;
+			font-size: 28px;
+		
+			width: 20%;
+			height: 90px;
+
+		}
+
+		p#pEscala{
+			position: relative;
+			width: 65%;
+			font-size: 30px;
+			left: 75px;
+			top: 50px;
+			background-color: #C5C1C0;
+
+		}
+		p#pEscala2{
+			position: absolute;
+			width: 78%;
+			font-size: 93%;
+			left: 42%;
+			top: 102%;
+			background-color: white;
+
+		}
